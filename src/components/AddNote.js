@@ -18,13 +18,13 @@ const AddNote = () => {
         <div className="container my-3">
             <div className="mb-3">
                 <label htmlFor="title" className="form-label text-start"><h2>Title</h2></label>
-                <input type="text" className="form-control" id="title" name="title" onChange={onChange} placeholder="Anshul Porwal" />
+                <input type="text" className="form-control" id="title" name="title" onChange={onChange} placeholder="Add your title here" />
             </div>
             <div className="mb-3">
                 <label htmlFor="description" className="form-label text-start"><h2>Add your note</h2></label>
-                <textarea className="form-control" id="description" name='description' rows="3" onChange={onChange}></textarea>
+                <textarea className="form-control" id="description" name='description' rows="3" onChange={onChange} placeholder="Add your note here"></textarea>
             </div>
-            <button type="submit" className="btn btn-primary" onClick={handleAdding}>Submit</button>
+            <button type="submit" className="btn btn-primary" onClick={handleAdding}>Add Note</button>
         </div>
     )
 }
