@@ -21,7 +21,7 @@ const Navbar = () => {
     }
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">iNotebook</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +41,11 @@ const Navbar = () => {
                             <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={handleDarkMode} />
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Dark Mode</label>
                         </div>
+
+                        <form className="d-flex">
+                            <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
+                            <Link className="btn btn-primary" to="/signup" role="button">Signup</Link>
+                        </form>
                     </div>
                 </div>
             </nav>
