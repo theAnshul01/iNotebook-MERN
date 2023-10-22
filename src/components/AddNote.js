@@ -17,13 +17,14 @@ const AddNote = (props) => {
         setNote({ ...note, [e.target.name]: e.target.value })   //syntax can be understood using the react developer tools (component) in browser, try to remove "...notes and see what happens in the note object in developer tools"
     }
     return (
-        <div className="container my-3">
+        <div className="container my-3 notebox">
+            <h2 className='my-3'>Add a New Note</h2>
             <div className="mb-3">
-                <label htmlFor="title" className="form-label text-start"><h2>Title</h2></label>
+                <label htmlFor="title" className="form-label text-start"><h4>Title</h4></label>
                 <input type="text" className="form-control" id="title" name="title" onChange={onChange} placeholder="Add your title here" value={note.title} autoFocus />
             </div>
             <div className="mb-3">
-                <label htmlFor="description" className="form-label text-start"><h2>Description</h2><span>(Atleast 5 characters)</span></label>
+                <label htmlFor="description" className="form-label text-start"><h4>Description</h4><span>(Atleast 5 characters)</span></label>
                 <textarea className="form-control" id="description" name='description' rows="3" onChange={onChange} placeholder="Add your note here" value={note.description}></textarea>
             </div>
             <div className="mb-3">

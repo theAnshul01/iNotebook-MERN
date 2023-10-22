@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     let location = useLocation();
-
+    const navigate = useNavigate();
     useEffect(() => {
         // console.log(location);
     }, [location]);
@@ -18,6 +19,11 @@ const Navbar = () => {
             document.documentElement.setAttribute('data-bs-theme', 'light');
             setTheme('light')
         }
+    }
+
+    const handleLogout =()=>{
+        localStorage.removeItem('token');
+        navigate("/login")
     }
     return (
         <>
@@ -42,10 +48,10 @@ const Navbar = () => {
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Dark Mode</label>
                         </div>
 
-                        <form className="d-flex">
+                        {!localStorage.getItem('token')?<form className="d-flex">
                             <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
                             <Link className="btn btn-primary" to="/signup" role="button">Signup</Link>
-                        </form>
+                        </form>: <button className='btn btn-primary mx-2' onClick={handleLogout}>Logout</button>}
                     </div>
                 </div>
             </nav>
