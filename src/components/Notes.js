@@ -4,7 +4,7 @@ import { NoteContext } from '../context/notes/NoteContext';
 import Noteitem from './Noteitem';
 import AddNote from './AddNote';
 
-const Notes = () => {
+const Notes = (props) => {
     const { Notes, getNotes, editNote } = useContext(NoteContext);
     const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "Default" })
 
@@ -19,12 +19,14 @@ const Notes = () => {
     const updateNote = (currentNote) => {
         ref.current.click()      //? used to click the launch modal button programmaticaly
         setNote({id:currentNote._id, etitle : currentNote.title , edescription: currentNote.description, etag: currentNote.tag})
+        
     }
 
     const handleUpdate = () => {
         console.log("updating the note...", note)
         editNote(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click()
+        props.showAlert("Updated Successfully", "success")
         
     }
 
@@ -34,7 +36,7 @@ const Notes = () => {
 
     return (
         <>
-            <AddNote />
+            <AddNote showAlert={props.showAlert} />
             <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch Modal Window
             </button>
@@ -72,7 +74,7 @@ const Notes = () => {
                 <h2>Your Notes</h2>
                 {Notes.length === 0 && <div className='container'>No notes to display</div>}
                 {Notes.map((Notes) => {
-                    return <Noteitem key={Notes._id} updateNote={updateNote} note={Notes} />
+                    return <Noteitem key={Notes._id} updateNote={updateNote} showAlert={props.showAlert} note={Notes} />
                 })}
             </div>
         </>

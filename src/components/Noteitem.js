@@ -16,7 +16,7 @@ export default function Noteitem(props) {
                     <Badge tag={note.tag}/>
                     <div className="d-flex">
                         <i className="fa-regular fa-pen-to-square" onClick={()=>{updateNote(note)}}></i>
-                        <i className="fa-regular fa-trash-can mx-2" onClick={()=>{deleteNote(note._id)}}></i>
+                        <i className="fa-regular fa-trash-can mx-2" onClick={() => { deleteNote(note._id); props.showAlert("Deleted Successfully", "success") ;}}></i>
                     </div>
                     
                 </div>
